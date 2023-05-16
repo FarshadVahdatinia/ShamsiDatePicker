@@ -1,0 +1,28 @@
+<p-toolbar styleClass="mb-1">
+    <ng-template pTemplate="left">
+      <!-- <div class="grid mr-1 mt-1"> -->
+        <form [formGroup]="defaultDatePickerForm">
+          <div class="grid">
+            <div class="col-12">
+              <p-selectButton  [options]="justifyOptions" optionLabel="label" formControlName="value" iconPos="right" (onOptionClick)="submitDate($event)"></p-selectButton>
+            </div>
+              <div class="col-12 sm:col-6 md:col-6 lg:col-4" *ngIf="displayDate">
+                <label for="fromDate" class="labelStyle"
+                  [innerHtml]="'app.models.salesByDate.fromDate' | translate"></label>
+                  <ng-persian-datepicker readOnly="readOnlyDatePicker" appendTo="body" [uiIsVisible]="false"  [uiHideAfterSelectDate]="true" [uiHideOnOutsideClick]="false" [dateFormat]="'YYYY-MM-DD'"  (dateOnSelect)="select()">
+                    <input pInputText #input type="text" formControlName="fromDate" [(ngModel)]="value1"   [readonly]="true"/>
+                  </ng-persian-datepicker>
+              </div>
+              <div class="col-12 sm:col-6 md:col-6 lg:col-4" *ngIf="displayDate">
+                <label for="toDate" class="labelStyle"
+                  [innerHtml]="'app.models.salesByDate.toDate' | translate"></label>
+                  <ng-persian-datepicker appendTo="body" [uiIsVisible]="false" [uiHideAfterSelectDate]="true" [uiHideOnOutsideClick]="false"   [dateFormat]="'YYYY-MM-DD'" (dateOnSelect)="select()">
+                    <input pInputText #input2 type="text" formControlName="toDate" [(ngModel)]="value2"   [readonly]="true"/>
+                  </ng-persian-datepicker>
+              </div>
+            </div>
+          </form>
+      <!-- </div> -->
+    </ng-template>
+  </p-toolbar>
+  
